@@ -6,7 +6,8 @@ export const Store = React.createContext(null);
 const initialState = {
   category: [],
   products: [],
-  purchaseHistory: []
+  purchaseHistory: [],
+  isLogged: false
 };
 
 export function StoreProvider(props) {

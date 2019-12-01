@@ -13,6 +13,11 @@ export function reducer(state, action) {
         ...state,
         purchaseHistory: action.payload
       };
+    case Actions.LOGIN:
+      return {
+        ...state,
+        isLogged: action.payload
+      };
     default:
       return state;
   }
