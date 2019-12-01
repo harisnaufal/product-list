@@ -1,12 +1,30 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BottomNavigation = () => {
-  const [menus] = React.useState(["home", "Feed", "Cart", "Profile"]);
+  const [menus] = React.useState([
+    {
+      name: "Home",
+      route: "/"
+    },
+    {
+      name: "Feed",
+      route: "/feed"
+    },
+    {
+      name: "Cart",
+      route: "/cart"
+    },
+    {
+      name: "Profile",
+      route: "/profile"
+    }
+  ]);
   return (
     <div className="bottom-navigation">
       {menus.map((menu, index) => (
         <div className="bottom-navigation--menu" key={index}>
-          <p>{menu}</p>
+          <Link to={menu.route}>{menu.name}</Link>
         </div>
       ))}
     </div>

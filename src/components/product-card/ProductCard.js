@@ -1,24 +1,45 @@
 import React from "react";
 import Store from "../../store/Store";
 
-const ProductCard = () => {
-  const [initProducts] = React.useState([0, 1, 2]);
+const ProductCardList = props => {
+  const [isFavourite, setIsFavourite] = React.useState(false);
+  const handlesetIsFavourite = () => {
+    setIsFavourite(!isFavourite);
+  };
+
+  React.useEffect(() => {
+    // console.log(isFavourite);
+  }, [isFavourite]);
+  return (
+    <div className="product-card--detail">
+      <div className="product-card--detail-img">
+        <img
+          src={props.imageUrl}
+          alt={props.title}
+          width={"100%"}
+          onClick={() => {
+            props.onClick(props.product);
+          }}
+        />
+        <i
+          className={`fa fa-heart${isFavourite ? "" : "-o"} favourite-icon`}
+          onClick={handlesetIsFavourite}
+        ></i>
+      </div>
+      <h4>{props.title}</h4>
+    </div>
+  );
+};
+
+const ProductCard = ({ onClick }) => {
   const store = React.useContext(Store);
+  const [initProducts] = React.useState([0, 1, 2]);
   return (
     <div className="product-card--wrapper">
       <div className="product-card--list">
         {store.products.length > 0
           ? store.products.map((product, index) => (
-              <div className="product-card--detail">
-                <div className="product-card--detail-img">
-                  <img
-                    src={product.imageUrl}
-                    alt={product.title}
-                    width={"100%"}
-                  />
-                </div>
-                <h4>{product.title}</h4>
-              </div>
+              <ProductCardList {...product} product={product} onClick={onClick}/>
             ))
           : initProducts.map((product, index) => (
               <div className="product-card--detail">
