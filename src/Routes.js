@@ -8,6 +8,7 @@ import "./App.css";
 import Dashboard from "./pages/Dashboard";
 import ProductDetail from "./pages/ProductDetail";
 import PurchaseHistory from "./pages/PurchaseHistory";
+import SearchProduct from "./pages/SearchProduct";
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
       <Route exact path="/" component={Dashboard} />
       <Route path="/product/detail" component={ProductDetail} />
       <Route path="/profile" component={PurchaseHistory} />
+      <Route path="/product/search" component={SearchProduct} />
     </div>
   );
 };

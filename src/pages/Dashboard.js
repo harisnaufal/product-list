@@ -33,9 +33,13 @@ const Dashboard = props => {
     });
   };
 
+  const navigateToSearch = item => {
+    props.history.push("/product/search");
+  };
+
   return (
     <div className="dashboard">
-      <Header />
+      <Header navigateToSearch={navigateToSearch}/>
       <Category />
       <ProductCard onClick={navigateToProductDetail} />
       <BottomNavigation />
