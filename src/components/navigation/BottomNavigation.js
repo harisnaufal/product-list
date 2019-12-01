@@ -9,11 +9,11 @@ const BottomNavigation = () => {
     },
     {
       name: "Feed",
-      route: "/feed"
+      route: "/"
     },
     {
       name: "Cart",
-      route: "/cart"
+      route: "/"
     },
     {
       name: "Profile",
