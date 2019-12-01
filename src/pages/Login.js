@@ -13,7 +13,14 @@ const Login = () => {
     });
   };
   const responseFacebook = (response) => {
-    console.log('responseFacebook', response);
+    if (response.accessToken){
+      return dispatch({
+        type: Actions.LOGIN,
+        payload: true
+      });
+    } else {
+      alert('Login Failed');
+    }
   }
   const responseGoogle = (response) => {
     if (response.tokenId){
@@ -49,19 +56,13 @@ const Login = () => {
         </button>
       </div>
       <div className="account">
-        {/* <button type="button" className="facebook">
-          Sign In With Facebook
-        </button>
-        <button type="button" className="google">
-          Sign In With Google
-        </button> */}
         <FacebookLogin
-          appId="466718857310317" //APP ID NOT CREATED YET
+          appId="472791220015747"
           fields="name,email,picture"
           callback={responseFacebook}
         />
         <GoogleLogin
-          clientId="820562297374-9cb29n9osnhti8fjv8bikkl02k8sd67i.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
+          clientId="820562297374-9cb29n9osnhti8fjv8bikkl02k8sd67i.apps.googleusercontent.com"
           buttonText="LOGIN WITH GOOGLE"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
